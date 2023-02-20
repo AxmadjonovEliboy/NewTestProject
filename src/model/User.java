@@ -19,7 +19,7 @@ public class User {
 
     private Integer age;
 
-    private Boolean deleted;
+    private Boolean deleted=false;
 
     private List<Course> courses = new ArrayList<>();
 
@@ -93,12 +93,9 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
                 ", age=" + age +
-                ", deleted=" + deleted +
                 ", courses=" + courses +
                 '}';
     }

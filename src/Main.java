@@ -22,10 +22,10 @@ public class Main {
                 case "1" -> UserService.register();
                 case "2" -> UserService.login();
                 case "3" -> {
-                    Utils.println("Good by 🥰");
+                    Utils.println("Good by 😢");
                     return;
                 }
-                default -> Utils.println("To`g`ri tanlang bro  😎 ");
+                default -> Utils.println("To`g`ri tanlang bro  🙄 ");
             }
 
         } else {
@@ -37,7 +37,7 @@ public class Main {
                 case "3" -> UserService.update();
                 case "4" -> UserService.delete();
                 case "5" -> UserService.logout();
-                default -> Utils.println("To`g`ri tanlang bro 😎 ");
+                default -> Utils.println("To`g`ri tanlang bro 🙄 ");
 
             }
         }
@@ -46,12 +46,11 @@ public class Main {
     }
 
     public static void theme() {
-        Utils.println("1 -> create");
-        Utils.println("2 -> get");
-        Utils.println("3 -> getAll");
-        Utils.println("4 -> update");
-        Utils.println("5 -> delete");
-        Utils.println("6 -> logout");
+        Utils.println("1 -> get");
+        Utils.println("2 -> getAll");
+        Utils.println("3 -> update");
+        Utils.println("4 -> delete");
+        Utils.println("5 -> logout");
     }
 
     public static void login() {

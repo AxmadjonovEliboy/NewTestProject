@@ -21,11 +21,20 @@ public class UserService {
     }
 
     public static void getAll() {
-
-    }
+        int counter = 1;
+        for (User user : MyDb.users) {
+                System.out.println(counter + user.toString());
+                counter++;
+            }
+        }
 
     public static void get() {
-
+        String choose = Utils.getString("Enter username:");
+        for (User user : MyDb.users) {
+            if (!user.getDeleted() && choose.equals(user.getUsername())){
+                System.out.println(user);
+            }
+        }
     }
 
 
