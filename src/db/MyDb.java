@@ -9,7 +9,7 @@ import java.util.List;
  * @author Jarvis on Mon 23:04. 20/02/23
  */
 public class MyDb {
-    private static List<User> users = new ArrayList<>();
+    public static List<User> users = new ArrayList<>();
     private static User session;
 
     public static User checkUsername(String username) {
