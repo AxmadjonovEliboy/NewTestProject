@@ -13,19 +13,66 @@ public class UserService {
 
 
     public static void delete() {
+        for (User user : MyDb.users) {
+            System.out.println(user);
+        }
+        String choose = Utils.getString("O`chiriladigan username:");
+        for (User user : MyDb.users) {
+            if (user.getUsername().equals(choose)) {
+                user.setDeleted(true);
+            }
+        }
 
     }
 
     public static void update() {
+        for (User user : MyDb.users) {
+            if (!user.getDeleted()){
+                System.out.println(user);
+            }
+        }
+        String choose=Utils.getString("Update username choose:");
+        for (User user : MyDb.users) {
+            if (!user.getDeleted()&&user.getUsername().equals(choose)){
+                String password=Utils.getString("Enter password:");
+                if (password.equals(user.getPassword())){
 
+                    String fullName=Utils.getString("Enter new fullName:");
+                    user.setFullName(fullName);
+
+                    String username=Utils.getString("Enter new username:");
+                    user.setUsername(username);
+
+                    String newPassword=Utils.getString("Enter new password:");
+                    user.setPassword(newPassword);
+
+                    int age=Utils.getNum("Enter new age:");
+                    user.setAge(age);
+
+                }else {
+                    System.out.println("Password xato kiritildi qaytadan urinib ko'r mag'ar");
+                }
+            }
+        }
     }
 
     public static void getAll() {
-
+        int counter = 1;
+        for (User user : MyDb.users) {
+            if (!user.getDeleted()) {
+                System.out.println(counter + user.toString());
+            }
+            counter++;
+        }
     }
 
     public static void get() {
-
+        String choose = Utils.getString("Enter username:");
+        for (User user : MyDb.users) {
+            if (!user.getDeleted() && choose.equals(user.getUsername())) {
+                System.out.println(user);
+            }
+        }
     }
 
 
