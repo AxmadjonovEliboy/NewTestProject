@@ -14,7 +14,10 @@ public class UserService {
 
     public static void delete() {
         for (User user : MyDb.users) {
-            System.out.println(user);
+
+            if (!user.getDeleted()) {
+                System.out.println(user);
+            }
         }
         String choose = Utils.getString("O`chiriladigan username:");
         for (User user : MyDb.users) {
@@ -27,30 +30,30 @@ public class UserService {
 
     public static void update() {
         for (User user : MyDb.users) {
-            if (!user.getDeleted()){
+            if (!user.getDeleted()) {
                 System.out.println(user);
             }
         }
-        String choose=Utils.getString("Update username choose:");
+        String choose = Utils.getString("Update username choose:");
         for (User user : MyDb.users) {
-            if (!user.getDeleted()&&user.getUsername().equals(choose)){
-                String password=Utils.getString("Enter password:");
-                if (password.equals(user.getPassword())){
+            if (!user.getDeleted() && user.getUsername().equals(choose)) {
+                String password = Utils.getString("Enter password:");
+                if (password.equals(user.getPassword())) {
 
-                    String fullName=Utils.getString("Enter new fullName:");
+                    String fullName = Utils.getString("Enter new fullName:");
                     user.setFullName(fullName);
 
-                    String username=Utils.getString("Enter new username:");
+                    String username = Utils.getString("Enter new username:");
                     user.setUsername(username);
 
-                    String newPassword=Utils.getString("Enter new password:");
+                    String newPassword = Utils.getString("Enter new password:");
                     user.setPassword(newPassword);
 
-                    int age=Utils.getNum("Enter new age:");
+                    int age = Utils.getNum("Enter new age:");
                     user.setAge(age);
 
-                }else {
-                    System.out.println("Password xato kiritildi qaytadan urinib ko'r mag'ar");
+                } else {
+                    Utils.println("Password xato kiritildi qaytadan urinib ko'r mag'ar");
                 }
             }
         }
