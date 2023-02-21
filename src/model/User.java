@@ -19,9 +19,17 @@ public class User {
 
     private Integer age;
 
-    private Boolean deleted = false;
-
     private List<Course> courses = new ArrayList<>();
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    private Boolean deleted = false;
 
     public User() {
     }
@@ -32,7 +40,6 @@ public class User {
         this.username = username;
         this.password = password;
         this.age = age;
-        addCourse();
     }
 
     public String getId() {
@@ -83,14 +90,6 @@ public class User {
         this.deleted = deleted;
     }
 
-    public List<Course> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
-    }
-
     @Override
     public String toString() {
         return "User{" +
@@ -98,14 +97,6 @@ public class User {
                 ", username='" + username + '\'' +
                 ", age=" + age +
                 '}';
-    }
-    public void addCourse() {
-        courses.add(new Course("Java", 1400.00));
-        courses.add(new Course("Python", 1200.00));
-        courses.add(new Course("C#", 1000.00));
-        courses.add(new Course("C++", 1300.00));
-        courses.add(new Course("PHP", 900.00));
-        courses.add(new Course("C", 1000.00));
     }
 
 }
