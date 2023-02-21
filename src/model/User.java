@@ -19,7 +19,7 @@ public class User {
 
     private Integer age;
 
-    private Boolean deleted=false;
+    private Boolean deleted = false;
 
     private List<Course> courses = new ArrayList<>();
 
@@ -32,6 +32,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.age = age;
+        addCourse();
     }
 
     public String getId() {
@@ -96,7 +97,15 @@ public class User {
                 " fullName='" + fullName + '\'' +
                 ", username='" + username + '\'' +
                 ", age=" + age +
-                ", courses=" + courses +
                 '}';
     }
+    public void addCourse() {
+        courses.add(new Course("Java", 1400.00));
+        courses.add(new Course("Python", 1200.00));
+        courses.add(new Course("C#", 1000.00));
+        courses.add(new Course("C++", 1300.00));
+        courses.add(new Course("PHP", 900.00));
+        courses.add(new Course("C", 1000.00));
+    }
+
 }

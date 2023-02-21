@@ -12,9 +12,15 @@ public class MyDb {
     public static List<User> users = new ArrayList<>();
     private static User session;
 
+    static {
+        users.add(new User("Jarvis", "jarvis", "777", 21));
+        users.add(new User("Friday", "friday", "555", 22));
+        users.add(new User("Monday", "monday", "222", 20));
+    }
+
     public static User checkUsername(String username) {
         for (User user : users) {
-            if (user.getUsername().equals(username)) {
+            if (user.getUsername().equals(username) && !user.getDeleted()) {
                 return user;
             }
         }

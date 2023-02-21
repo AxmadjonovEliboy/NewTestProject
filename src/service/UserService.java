@@ -14,11 +14,11 @@ public class UserService {
 
     public static void delete() {
         for (User user : MyDb.users) {
-
             if (!user.getDeleted()) {
                 System.out.println(user);
             }
         }
+
         String choose = Utils.getString("O`chiriladigan username:");
         for (User user : MyDb.users) {
             if (user.getUsername().equals(choose)) {

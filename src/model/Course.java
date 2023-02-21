@@ -17,12 +17,12 @@ public class Course {
     public Course() {
     }
 
-    public Course(String name, Double price, Boolean isTake, Boolean deleted) {
+    public Course(String name, Double price) {
         this.id = Utils.getId();
         this.name = name;
         this.price = price;
-        this.isTake = isTake;
-        this.deleted = deleted;
+        this.isTake = false;
+        this.deleted = false;
     }
 
     public String getId() {
