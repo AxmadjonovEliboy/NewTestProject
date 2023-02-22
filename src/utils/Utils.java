@@ -8,8 +8,8 @@ import java.util.UUID;
  */
 public class Utils {
 
-    private static Scanner SCANNER_NUM = new Scanner(System.in);
-    private static Scanner SCANNER_STR = new Scanner(System.in);
+    private static final Scanner SCANNER_NUM = new Scanner(System.in);
+    private static final Scanner SCANNER_STR = new Scanner(System.in);
 
     public static String getId() {
         return UUID.randomUUID().toString();

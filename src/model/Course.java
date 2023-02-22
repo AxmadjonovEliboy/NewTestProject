@@ -10,9 +10,8 @@ public class Course {
     private String id;
     private String name;
     private Double price;
-    private Boolean isTake;
-
-    private Boolean deleted;
+    private boolean isTake;
+    private boolean deleted;
 
     public Course() {
     }
@@ -67,9 +66,6 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course{" +
-                " name='" + name + '\'' +
-                ", price=" + price +
-                '}';
+        return "Course{" + " name='" + name + '\'' + ", price=" + price + '}';
     }
 }

@@ -26,7 +26,7 @@ public class Main {
                     Utils.println("Good by 😢");
                     return;
                 }
-                default -> Utils.println("To`g`ri tanlang bro  🙄 ");
+                default -> Utils.println("To`g`ri tanla mag'ar  🙄 ");
             }
 
         } else {
@@ -52,7 +52,7 @@ public class Main {
         Utils.println("2 -> getAll");
         Utils.println("3 -> update");
         Utils.println("4 -> delete");
-        Utils.println("5 -> Courses");
+        Utils.println("5 -> courses");
         Utils.println("6 -> logout");
     }
 

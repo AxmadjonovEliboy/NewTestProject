@@ -2,6 +2,7 @@ package db;
 
 import model.Course;
 import model.User;
+import utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,15 @@ public class MyDb {
         for (User user : users) {
             if (user.getUsername().equals(username) && !user.getDeleted()) {
                 return user;
+            }
+        }
+        return null;
+    }
+
+    public static Course checkCourse(String course) {
+        for (Course cours : courses) {
+            if (cours.getName().equals(course) && !cours.getDeleted()) {
+                return cours;
             }
         }
         return null;
