@@ -7,6 +7,7 @@ import utils.Utils;
 import java.util.Objects;
 
 public class CourseService {
+    public static boolean isFound = false;
     public static int counter = 1;
 
     public static void allCourse() {
@@ -24,14 +25,18 @@ public class CourseService {
         String courseName = Utils.getString("Course name enter:");
         double price = Utils.getNum("Course price:");
 
-        boolean a = false;
+        isFound = false;
         for (Course course : MyDb.courses) {
             if (course.getName().equals(courseName)) {
-                a = true;
+                Utils.println(Utils.ANSI_YELLOW_BACKGROUND + Utils.ANSI_RED + "This course is available" + Utils.ANSI_RESET);
+                isFound = true;
                 break;
             }
         }
-        if (!a) MyDb.courses.add(new Course(courseName, price));
+        if (!isFound) {
+            MyDb.courses.add(new Course(courseName, price));
+            Utils.printSuccessful();
+        }
     }
 
     public static void deleteCourse() {
@@ -42,11 +47,18 @@ public class CourseService {
                 counter++;
             }
         }
+        isFound = false;
         String choice = Utils.getString("Choice delete course name: ");
         for (Course course : MyDb.courses) {
             if (!course.getDeleted() && course.getName().equals(choice)) {
                 course.setDeleted(true);
+                Utils.printSuccessful();
+                isFound = true;
+                break;
             }
+        }
+        if (!isFound) {
+            Utils.printNotFound();
         }
     }
 
@@ -60,7 +72,7 @@ public class CourseService {
         }
         String choose = Utils.getString("Choice update course name: ");
         if (Objects.isNull(MyDb.checkCourse(choose))) {
-            Utils.println("Bunday course name mavjud emas");
+            Utils.printNotFound();
         } else {
             Utils.println("1-> Course name update");
             Utils.println("2-> Course price update");
@@ -70,7 +82,7 @@ public class CourseService {
             } else if (choice == 2) {
                 updateCoursePrice(choose);
             } else {
-                Utils.println("Xato qitmat kiritdingiz bor");
+                Utils.println("Xato qiymat kiritdingiz bor");
                 updateCourse();
             }
         }
@@ -82,6 +94,8 @@ public class CourseService {
         for (Course course : MyDb.courses) {
             if (!course.getDeleted() && course.getName().equals(oldCourseName)) {
                 course.setPrice(newCoursePrice);
+                Utils.printSuccessful();
+                break;
             }
         }
     }
@@ -91,6 +105,8 @@ public class CourseService {
         for (Course course : MyDb.courses) {
             if (!course.getDeleted() && course.getName().equals(oldCourseName)) {
                 course.setName(newCourseName);
+                Utils.printSuccessful();
+                break;
             }
         }
     }
@@ -109,20 +125,19 @@ public class CourseService {
     }
 
     private static void deleteMyCourses() {
-        counter = 1;
-        for (Course course : MyDb.getSession().getCourses()) {
-            if (!course.getDeleted() && course.getTake()) {
-                System.out.println(counter + ") " + course);
-                counter++;
-            }
-        }
+        isFound = false;
+        myCourses();
         String choice_course = Utils.getString("Enter ");
         for (Course course : MyDb.getSession().getCourses()) {
-            if (!course.getDeleted()&& course.getTake() && course.getName().equals(choice_course)){
+            if (!course.getDeleted() && course.getTake() && course.getName().equals(choice_course)) {
                 course.setTake(false);
-                System.out.println("Successful");
+                Utils.printSuccessful();
+                isFound = true;
                 break;
             }
+        }
+        if (!isFound) {
+            Utils.printNotFound();
         }
     }
 
@@ -134,13 +149,18 @@ public class CourseService {
                 counter++;
             }
         }
-
+        isFound = false;
         String choice_course = Utils.getString("Enter course name : ");
         for (Course course : MyDb.courses) {
-            if (course.getName().equals(choice_course)) {
-                course.setTake(true);
+            if (!course.getDeleted() && !course.getTake()&&course.getName().equals(choice_course)) {
                 MyDb.getSession().getCourses().add(course);
+                course.setTake(true);
+                Utils.printSuccessful();
+                isFound = true;
             }
+        }
+        if (!isFound) {
+            Utils.printNotFound();
         }
     }
 
@@ -152,5 +172,9 @@ public class CourseService {
                 counter++;
             }
         }
+        if (counter==1){
+            Utils.println(Utils.ANSI_RED_BACKGROUND+Utils.ANSI_BLACK+" Empty "+Utils.ANSI_RESET);
+        }
     }
+
 }
