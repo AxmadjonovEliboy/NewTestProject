@@ -51,7 +51,7 @@ public class UserService {
                     Utils.println("2 -> edit username");
                     Utils.println("3 -> edit password");
                     Utils.println("4 -> edit age");
-                    Utils.println("5 -> quit");
+                    Utils.println("5 -> back");
                     String choice_update = Utils.getString("-> ? ");
                     switch (choice_update) {
                         case "1" -> editFullName(user.getUsername());
@@ -102,7 +102,7 @@ public class UserService {
                     Utils.printSuccessful();
                     break;
                 }else {
-                    Utils.println(Utils.ANSI_RED_BACKGROUND+Utils.ANSI_YELLOW+"This username is busy"+Utils.ANSI_RESET);
+                    Utils.println(Utils.ANSI_RED_BACKGROUND+Utils.ANSI_BLACK+"This username is busy"+Utils.ANSI_RESET);
                 }
             }
         }
@@ -158,6 +158,7 @@ public class UserService {
         Integer age = Utils.getNum("Enter age : ");
         User user = new User(fullName, username, password, age);
         MyDb.addUser(user);
+        Utils.printSuccessful();
     }
 
     public static void login() {
@@ -169,6 +170,8 @@ public class UserService {
         } else if (user.getPassword().equals(password)) {
             Utils.printSuccessful();
             MyDb.setSession(user);
+        }else{
+            Utils.println(Utils.ANSI_RED_BACKGROUND+Utils.ANSI_BLACK+" Error password "+Utils.ANSI_RESET);
         }
 
     }

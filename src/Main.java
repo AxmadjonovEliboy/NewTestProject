@@ -63,27 +63,26 @@ public class Main {
     }
 
     public static void courses() {
-        while (true) {
 
-            Utils.println("1 -> all course");
-            Utils.println("2 -> add course");
-            Utils.println("3 -> delete course");
-            Utils.println("4 -> update course");
-            Utils.println("5 -> my course");
-            Utils.println("6 -> Quit");
+        Utils.println("1 -> all course");
+        Utils.println("2 -> add course");
+        Utils.println("3 -> delete course");
+        Utils.println("4 -> update course");
+        Utils.println("5 -> my course");
+        Utils.println("6 -> back");
 
-            String choice = Utils.getString("?: ");
-            switch (choice) {
-                case "1" -> CourseService.allCourse();
-                case "2" -> CourseService.addCourse();
-                case "3" -> CourseService.deleteCourse();
-                case "4" -> CourseService.updateCourse();
-                case "5" -> CourseService.myCourse();
-                case "6" -> run();
-                default -> {
-                    Utils.println("To`g`ri tanlang bro 🙄 ");
-                }
+        String choice = Utils.getString("?: ");
+        switch (choice) {
+            case "1" -> CourseService.allCourse();
+            case "2" -> CourseService.addCourse();
+            case "3" -> CourseService.deleteCourse();
+            case "4" -> CourseService.updateCourse();
+            case "5" -> CourseService.myCourse();
+            case "6" -> {
+                run();
             }
+            default -> Utils.println("To`g`ri tanlang bro 🙄 ");
+
         }
     }
 }

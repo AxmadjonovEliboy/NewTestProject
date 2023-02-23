@@ -2,8 +2,6 @@ package db;
 
 import model.Course;
 import model.User;
-import utils.Utils;
-
 import java.util.ArrayList;
 import java.util.List;
 

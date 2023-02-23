@@ -82,7 +82,7 @@ public class CourseService {
             } else if (choice == 2) {
                 updateCoursePrice(choose);
             } else {
-                Utils.println("Xato qiymat kiritdingiz bor");
+                Utils.println("Xato qiymat kiritdingiz bro");
                 updateCourse();
             }
         }
@@ -115,30 +115,44 @@ public class CourseService {
         Utils.println("1 -> my courses");
         Utils.println("2 -> add my courses");
         Utils.println("3 -> delete my courses");
+        Utils.println("4 -> back");
         int choice = Utils.getNum(".?");
         switch (choice) {
             case 1 -> myCourses();
             case 2 -> addMyCourses();
             case 3 -> deleteMyCourses();
+            case 4 ->{}
             default -> myCourse();
         }
     }
 
     private static void deleteMyCourses() {
         isFound = false;
-        myCourses();
-        String choice_course = Utils.getString("Enter ");
+        counter = 1;
         for (Course course : MyDb.getSession().getCourses()) {
-            if (!course.getDeleted() && course.getTake() && course.getName().equals(choice_course)) {
-                course.setTake(false);
-                Utils.printSuccessful();
-                isFound = true;
-                break;
+            if (!course.getDeleted() && course.getTake()) {
+                System.out.println(counter + ") " + course);
+                counter++;
             }
         }
-        if (!isFound) {
-            Utils.printNotFound();
+        if (counter==1){
+            Utils.println(Utils.ANSI_RED_BACKGROUND+Utils.ANSI_BLACK+" Empty "+Utils.ANSI_RESET);
+        }else {
+
+            String choice_course = Utils.getString("Enter ");
+            for (Course course : MyDb.getSession().getCourses()) {
+                if (!course.getDeleted() && course.getTake() && course.getName().equals(choice_course)) {
+                    course.setTake(false);
+                    Utils.printSuccessful();
+                    isFound = true;
+                    break;
+                }
+            }
+            if (!isFound) {
+                Utils.printNotFound();
+            }
         }
+        myCourse();
     }
 
     private static void addMyCourses() {
@@ -162,6 +176,7 @@ public class CourseService {
         if (!isFound) {
             Utils.printNotFound();
         }
+        myCourse();
     }
 
     private static void myCourses() {
@@ -175,6 +190,6 @@ public class CourseService {
         if (counter==1){
             Utils.println(Utils.ANSI_RED_BACKGROUND+Utils.ANSI_BLACK+" Empty "+Utils.ANSI_RESET);
         }
+        myCourse();
     }
-
 }
